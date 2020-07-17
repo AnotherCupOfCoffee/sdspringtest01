@@ -1,0 +1,35 @@
+table {
+    border-collapse: collapse;
+    width: 80%
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+    font: 1em sans-serif;
+    font-size: 10;
+  }
+
+  .yheader{
+background-color: yellow;
+
+  }
+
+.xinput1
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
+    color: darkgreen;
+}
+
+.somelink{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
+    color: green;
+    font-weight: bold;
+}
+
+.smalldebug{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: smaller;
+    color: navy ;
+}

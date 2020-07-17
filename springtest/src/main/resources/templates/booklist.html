@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SD Demo Booklist</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<h2>Booklist
+	<!-- 	Your Booklist, <span th:text="${username}">NAME</span>?  -->
+	</h2>
+	<img th:src="@{/images/logo_small.jpg}" />
+	
+	<ul>
+	
+		<li th:each="book : ${books}">
+		<span th:text="${book.entry_name}">Book	Name</span>
+		<span th:text="${book.infotext}">Book Info</span>
+		<span th:text="${book.isbn}">Book ISBN</span></li>
+		
+	</ul>
+
+
+</body>
+</html>

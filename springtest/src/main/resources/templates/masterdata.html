@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SD Demo</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<h1>Add a Book</h1>
+	<h2>
+		Your new Book, <span th:text="${user.fullname}">NAME</span>?
+	</h2>
+	<img th:src="@{/images/logo_small.jpg}" />
+
+	<!-- 
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+     -->
+
+	<form th:method="POST" th:object="${design}" th:action="@{/design}"
+		id="bookForm">
+		
+		<ul>
+			<li th:each="book : ${order.books}"><span th:text="${book.name}">Book Name</span></li>
+		</ul>
+
+		<h3>Name of Book:</h3>
+		<input type="text" th:field="*{name}" />
+		 <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+		  <br />
+		<input type="text" th:field="*{author}" />
+		<input type="text" th:field="*{isbn}" />
+
+		<button>Submit Book</button>
+
+	</form>
+</body>
+</html>

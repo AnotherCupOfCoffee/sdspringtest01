@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>SD Demo Booklist</title>
+<link rel="stylesheet" href="/styles.css"/>
+<script>
+      function anfordern()
+      {
+         var req = new XMLHttpRequest();
+         req.open("get", "/booklist", true);
+         req.onreadystatechange = auswerten;
+         req.send();
+      }
+
+      function auswerten(e)
+      {
+         if(e.target.readyState == 4 && e.target.status == 200)
+         {
+           // document.getElementById("xmlantwort").firstChild.nodeValue =
+           //    e.target.responseText;
+         
+         var objFeld;
+         var tinsert = "";
+			
+	 
+         objFeld = JSON.parse(e.target.responseText);    
+		var table = document.getElementById("bookshere");		 
+         for(var i=0; i<objFeld.bookList.length; i++)      
+        	{ 
+			 console.log ("JSON Part: " +  objFeld.bookList[i].entry_name);
+			 //tinsert += "<TR><TD>" + objFeld.bookList[i].entry_name + "</TD><TD>" + objFeld.bookList[i].infotext + "</TD><TD>"+ objFeld.bookList[i].isbn + "</TD></TR>";
+			 var row = table.insertRow(i + 1);
+			 var cell1 = row.insertCell(0);
+			 cell1.innerHTML = objFeld.bookList[i].entry_name;
+			 var cell2 = row.insertCell(1);
+			 cell2.innerHTML = objFeld.bookList[i].infotext;
+			 var cell3 = row.insertCell(2);
+			 cell3.innerHTML = objFeld.bookList[i].isbn;
+			 //document.getElementById("bookshere").			 
+			 }
+        	// tinsert += "<li>" + objFeld[i].bookList.entry_name + " " + objFeld[i].bookList.isbn ;
+        	 //tinsert += "<li>" + objFeld[i].entry_name + " " + objFeld[i].isbn ;
+          //document.getElementById("xmlantwort").firstChild.nodeValue = tinsert;
+		  
+		 // tinsert += "</table>";
+		  //document.getElementById("xmlantwort").firstChild.nodeValue = tinsert;
+               
+          //document.getElementById("xmlantwort").firstChild.nodeValue = e.target.responseText; 
+         }
+         
+      }
+      
+      function jsHandler(id, ereignis, funktion)
+      {
+         if(window.addEventListener)
+            document.getElementById(id)
+               .addEventListener(ereignis, funktion, false);
+         else if(window.attachEvent)
+            document.getElementById(id)
+               .attachEvent("on" + ereignis, funktion);
+      }
+      
+   </script>
+</head>
+
+<body>
+	<h2>Booklist
+	
+	</h2>
+	
+<!--	 <p><a id="idLink" href="#">Load using AJAX</a></p> -->
+	
+	<img src="/images/logo_small.jpg" />
+	
+	
+	
+     
+	<p id="xmlantwort">Platzhalter</p>
+	<table id="bookshere"><TR><TD>Name</TD><TD>Info</TD><TD>ISBN</TD></TR>
+	
+	</table>
+	<BR>
+	 <a href="/">Back to Home</a>
+	 <BR>
+	  <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+		
+<script>
+	//jsHandler("idLink", "click", anfordern);
+	
+	anfordern();
+	
+   </script>
+</body>
+</html>
+
+
