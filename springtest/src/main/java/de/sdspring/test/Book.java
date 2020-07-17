@@ -60,6 +60,30 @@ public class Book implements Serializable {
 	@Column(name = "infotext")
 	private String infotext;
 
+	public String getEntry_name() {
+		return entry_name;
+	}
+
+	public void setEntry_name(String entry_name) {
+		this.entry_name = entry_name;
+	}
+
+	public String getInfotext() {
+		return infotext;
+	}
+
+	public void setInfotext(String infotext) {
+		this.infotext = infotext;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
 	@NotNull
 	@Column(name = "isbn")
 	private String isbn;
