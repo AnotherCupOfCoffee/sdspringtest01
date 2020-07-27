@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class SpringtestApplicationTests {
-
+	// change for GIT
 	@Test
 	void contextLoads() {
 	}
